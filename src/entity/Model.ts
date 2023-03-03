@@ -4,13 +4,13 @@ import mongoose from 'mongoose'
 export const CreateModelSchema = joi.object({
     name: joi.string().required(),
     artistFullname: joi.string().required(),
-    valid: joi.booleanValue().required()
+    valid: joi.boolean().required()
 }).required()
 
 export const UpdateModelSchema = joi.object({
     name: joi.string().required(),
     artistFullname: joi.string().required(),
-    valid: joi.booleanValue().required()
+    valid: joi.boolean().required()
 }).required()
 
 
