@@ -16,9 +16,7 @@ export const UpdateModelSchema = joi.object({
 
 const modelSchema = new mongoose.Schema({
     id: Number,
-    name: {
-        type: String
-    },
+    name: String,
     artistFullname: String,
     valid: Boolean
 })
