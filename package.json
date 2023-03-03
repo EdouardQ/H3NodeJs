@@ -23,6 +23,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "init:jwt" : "node ./src/utils/init-jwt.js"
+    "init:jwt" : "tsc ./src/utils/InitJwt.ts && npx run-func ./src/utils/InitJwt.js InitJwt"
   }
 }
