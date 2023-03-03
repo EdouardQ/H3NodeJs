@@ -4,7 +4,8 @@ import mongoose from 'mongoose'
 export const CreateUserSchema = joi.object({
     name: joi.string().required(),
     email: joi.string().email().required(),
-    password: joi.string().required()
+    password: joi.string().required(),
+    role: joi.string().required()
 }).required()
 
 export const UpdateUserSchema = joi.object({
@@ -28,6 +29,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: Object
     },
+    role: String,
     created_at: Date,
     updated_at: Date
 })
