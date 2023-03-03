@@ -7,9 +7,13 @@ const routeAdmin = "/admin/"
 const routeManager = "/manager/"
 const routeArtist = "/artist/"
 
+// TO DO : condition sur le droit lorsque que le TOKEN sera disponible
+
 /**
  * Admin section
  */
+
+// Affiche tout les utlisateurs sans afficher le mot de passe
 router.get(routeAdmin + '/remove-passwd', async (req, res) => {
     const users = await User.find()
     console.log((req as any).auth)
@@ -18,6 +22,7 @@ router.get(routeAdmin + '/remove-passwd', async (req, res) => {
         .json(removePassword(users.map((user) => removePassword(user.toObject()))))
 })
 
+// Recherche d'un utilisateur
 router.get(routeAdmin +'/search-user/:id', async (req, res) => {
     const user = await User.findById(req.params.id)
     if (user == null) {
@@ -30,10 +35,37 @@ router.get(routeAdmin +'/search-user/:id', async (req, res) => {
  * Manager section
  */
 
+// Affiche les maquettes en cours d'évaluation OU les maquette évalué
+router.get(routeManager +'/modals/:valid', async (req, res) => {
+
+
+})
+
+// Affiche la maquette en fonction de son id
+router.get(routeManager +'/modal/:id', async (req, res) => {
+
+
+})
+
+// Affiche la maquette en fonction de son id
+router.get(routeManager +'/modal/:id', async (req, res) => {
+
+
+})
 
 /**
  * Artist section
  */
+// Affiche les maquettes appartenant à l'utilisateur
+router.get(routeArtist +'/modals/', async (req, res) => {
 
+
+})
+
+// Création d'une maquette
+router.post(routeArtist +'/modal/', async (req, res) => {
+
+
+})
 
 export default router
