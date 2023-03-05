@@ -18,6 +18,10 @@ router.post('/login', async (req, res) => {
         return res.status(400).json({ error: 'Invalid credentials' })
     }
 
+    if (user.banned) {
+        return res.status(400).json({ error: 'User is banned' })
+    }
+
     const token = generateToken(user.toObject())
     res.status(200).json({ user: userSerialized(token) })
 })

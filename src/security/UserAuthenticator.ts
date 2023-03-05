@@ -9,7 +9,7 @@ export const generateToken = (user: typeof User) => {
     }
 
     const token = jwt.sign({ sub: userSerialized(user) }, secret, {
-        expiresIn: '7d'
+        expiresIn: '1h'
     })
 
     return {

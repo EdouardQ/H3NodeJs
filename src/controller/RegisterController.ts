@@ -26,6 +26,7 @@ router.post('/register', async (req, res) => {
     registerDTO.role = "artist";
     registerDTO.created_at = new Date();
     registerDTO.updated_at = new Date();
+    registerDTO.banned = false;
 
     let user = await User.create(registerDTO);
 

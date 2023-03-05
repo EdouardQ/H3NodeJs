@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode";
 
-export const getIdUser = (req: any): number|null => {
+export const getIdUser = (req: any): string|null => {
     const token: string = req.header('Authorization').split(' ')[1] ?? null;
 
     if (token == null) {

@@ -8,10 +8,8 @@ export const CreateUserSchema = joi.object({
     role: joi.string().required()
 }).required()
 
-export const UpdateUserSchema = joi.object({
-    name: joi.string().optional(),
-    email: joi.string().email().optional(),
-    password: joi.string().optional()
+export const UpdateBannedUserSchema = joi.object({
+    banned: joi.boolean().required()
 }).required()
 
 export const userSerialized = (user: any) => {
@@ -30,7 +28,8 @@ const userSchema = new mongoose.Schema({
     },
     role: String,
     created_at: Date,
-    updated_at: Date
+    updated_at: Date,
+    banned: Boolean
 })
 
 export const User = mongoose.model('User', userSchema)

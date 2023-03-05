@@ -13,5 +13,6 @@ export default interface registerDTO {
     name: string,
     role: string,
     created_at: Date,
-    updated_at: Date
+    updated_at: Date,
+    banned: boolean
 }

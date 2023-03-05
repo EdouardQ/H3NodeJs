@@ -44,7 +44,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6404c5c497d6b0996e8af297"
+									"value": "640518878c781aae21a69314"
 								}
 							]
 						}
@@ -70,13 +70,13 @@
 					"response": []
 				},
 				{
-					"name": "Put set valid Model",
+					"name": "Put Ban User",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"valid\": false\n}",
+							"raw": "{\n    \"banned\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,19 +84,44 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/admin/models/:id",
+							"raw": "{{baseUrl}}/admin/users/:id",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"admin",
-								"models",
+								"users",
 								":id"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "640512174604158e662207f1"
+									"value": "640518878c781aae21a69314"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ban User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/admin/users/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "640518878c781aae21a69314"
 								}
 							]
 						}
