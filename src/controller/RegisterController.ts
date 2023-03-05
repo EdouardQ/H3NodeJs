@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import { User, userSerialized } from '../entity/User'
-import {hashPassword} from "../sevices/PasswordHasherService";
-import registerDTO, {registerSchema} from "../dto/register";
-import {verifUniqueUser} from "../sevices/UniqueUserService";
+import { hashPassword } from "../sevices/PasswordHasherService";
+import registerDTO, { registerSchema } from "../dto/register";
+import { verifUniqueUser } from "../sevices/UniqueUserService";
 
 const router = Router()
 

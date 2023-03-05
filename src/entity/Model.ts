@@ -6,14 +6,13 @@ export const CreateModelSchema = joi.object({
     url: joi.string().required(),
 }).required()
 
-export const UpdateModelSchema = joi.object({
-    name: joi.string().required(),
-    artistId: joi.string().required(),
-    url: joi.string().required(),
-    valid: joi.boolean().required(),
+export const UpdateValidModelSchema = joi.object({
+    valid: joi.boolean().required()
+}).required()
+
+export const UpdateVotesModelSchema = joi.object({
     approval: joi.number().required(),
-    disapproval: joi.number().required(),
-    uploaded_at: joi.date().required()
+    disapproval: joi.number().required()
 }).required()
 
 const modelSchema = new mongoose.Schema({

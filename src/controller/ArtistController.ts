@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import {getIdUser, isArtist} from "../security/UserManager";
-import {CreateModelSchema, Model} from "../entity/Model";
+import { getIdUser, isArtist } from "../security/UserManager";
+import { CreateModelSchema, Model } from "../entity/Model";
 import modelDTO from "../dto/model";
 
 const router = Router()
 
-router.get('/model', async (req, res) => {
+router.get('/models', async (req, res) => {
     if (!isArtist(req, res)) {
         return res.status(403).json({ error: 'Forbidden' });
     }
@@ -20,7 +20,7 @@ router.get('/model', async (req, res) => {
     return res.status(200).json(models);
 });
 
-router.post('/model', async (req, res) => {
+router.post('/models', async (req, res) => {
     if (!isArtist(req, res)) {
         return res.status(403).json({ error: 'Forbidden' });
     }

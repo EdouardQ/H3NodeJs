@@ -50,6 +50,58 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get all Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/admin/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put set valid Model",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"valid\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/admin/models/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"models",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "640512174604158e662207f1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"auth": {
@@ -101,13 +153,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/artist/model",
+							"raw": "{{baseUrl}}/artist/models",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"artist",
-								"model"
+								"models"
 							]
 						}
 					},
@@ -119,13 +171,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/artist/model",
+							"raw": "{{baseUrl}}/artist/models",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"artist",
-								"model"
+								"models"
 							]
 						}
 					},
