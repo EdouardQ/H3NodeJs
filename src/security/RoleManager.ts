@@ -12,32 +12,32 @@ const getRole = (req: any): string => {
     return decodedToken.sub.role ?? 'none';
 };
 
-export const isAdmin = (req: any, res: any, next: any) => {
+export const isAdmin = (req: any, res: any): boolean => {
     const role = getRole(req);
 
     if (role !== 'admin') {
-        return res.status(403).json({ error: 'Forbidden' });
+        return false
     }
 
-    next();
+    return true;
 }
 
 export const isManager = (req: any, res: any, next: any) => {
     const role = getRole(req);
 
     if (role !== 'manager') {
-        return res.status(403).json({ error: 'Forbidden' });
+        return false
     }
 
-    next();
+    return true;
 }
 
 export const isArtist = (req: any, res: any, next: any) => {
     const role = getRole(req);
 
     if (role !== 'artist') {
-        return res.status(403).json({ error: 'Forbidden' });
+        return false
     }
 
-    next();
+    return true;
 }
