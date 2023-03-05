@@ -23,9 +23,7 @@ export const userSerialized = (user: any) => {
 
 const userSchema = new mongoose.Schema({
     id: Number,
-    name: {
-        type: String
-    },
+    name: String,
     email: String,
     password: {
         type: Object

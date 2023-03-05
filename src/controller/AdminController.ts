@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { User } from '../entity/User'
-import {isAdmin} from "../security/RoleManager";
+import { isAdmin } from "../security/RoleManager";
 
 const router = Router()
 

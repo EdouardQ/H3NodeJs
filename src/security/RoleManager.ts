@@ -22,7 +22,7 @@ export const isAdmin = (req: any, res: any): boolean => {
     return true;
 }
 
-export const isManager = (req: any, res: any, next: any) => {
+export const isManager = (req: any, res: any) => {
     const role = getRole(req);
 
     if (role !== 'manager') {
@@ -32,7 +32,7 @@ export const isManager = (req: any, res: any, next: any) => {
     return true;
 }
 
-export const isArtist = (req: any, res: any, next: any) => {
+export const isArtist = (req: any, res: any) => {
     const role = getRole(req);
 
     if (role !== 'artist') {
