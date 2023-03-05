@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import { jwt } from './src/security/AuthMiddleware'
 import errorHandler from "./src/error/errorsMiddleware";
 import adminRouter from "./src/controller/AdminController";
+import artistRouter from "./src/controller/ArtistController";
 import authRouter from "./src/controller/LoginController";
 import registerRouter from "./src/controller/RegisterController";
 import dotenv from 'dotenv';
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/admin', adminRouter);
+app.use('/artist', artistRouter);
 app.use('/auth', authRouter);
 app.use('/auth', registerRouter);
 
