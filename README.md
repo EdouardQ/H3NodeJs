@@ -3,6 +3,7 @@
 ## Installation 
 
 yarn install
+
 yarn init:jwt
 
 yarn start
