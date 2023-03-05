@@ -1,4 +1,4 @@
-import { type User } from '../entity/User'
+import {type User, userSerialized} from '../entity/User'
 import jwt from 'jsonwebtoken'
 import * as fs from "fs";
 
@@ -8,7 +8,7 @@ export const generateToken = (user: typeof User) => {
         throw new Error('JWT secret is not defined')
     }
 
-    const token = jwt.sign({ sub: user }, secret, {
+    const token = jwt.sign({ sub: userSerialized(user) }, secret, {
         expiresIn: '7d'
     })
 

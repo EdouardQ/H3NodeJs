@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import { jwt } from './src/security/AuthMiddleware'
 import errorHandler from "./src/error/errorsMiddleware";
-import usersRouter from "./src/controller/UserController";
+import adminRouter from "./src/controller/AdminController";
 import authRouter from "./src/controller/LoginController";
 import registerRouter from "./src/controller/RegisterController";
 import dotenv from 'dotenv';
@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 })
 
-app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/auth', registerRouter);
 

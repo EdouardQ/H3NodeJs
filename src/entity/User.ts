@@ -16,8 +16,7 @@ export const UpdateUserSchema = joi.object({
 
 export const userSerialized = (user: any) => {
     const { password, ...userWithoutPassword } = user
-    const { _id, ...userWithoutId } = userWithoutPassword
-    const { __v, ...userSerialized } = userWithoutId
+    const { __v, ...userSerialized } = userWithoutPassword
 
     return userSerialized
 }
