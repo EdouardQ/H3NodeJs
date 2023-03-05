@@ -22,4 +22,6 @@ router.get('/users/:id', async (req, res) => {
     return res.status(200).json(user)
 })
 
+// miss other routes
+
 export default router

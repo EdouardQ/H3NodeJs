@@ -10,5 +10,8 @@ export const registerSchema = Joi.object({
 export default interface registerDTO {
     email: string
     password: string|Password,
-    name: string
+    name: string,
+    role: string,
+    created_at: Date,
+    updated_at: Date
 }

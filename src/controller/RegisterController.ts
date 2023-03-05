@@ -17,11 +17,11 @@ router.post('/register', async (req, res) => {
     }
 
     registerDTO.password = hashPassword(registerDTO.password);
+    registerDTO.role = "artist";
+    registerDTO.created_at = new Date();
+    registerDTO.updated_at = new Date();
 
-    const user = await User.create(registerDTO);
-    user.role = "artist";
-    user.created_at = new Date();
-    user.updated_at = new Date();
+    let user = await User.create(registerDTO);
 
     res.status(200).json({ user: userSerialized(user.toObject()) })
 })
