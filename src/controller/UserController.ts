@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { hashPassword } from '../sevices/PasswordHasherService'
-import { User, CreateUserSchema, UpdateUserSchema, removePassword } from '../entity/User'
+import { User, CreateUserSchema, UpdateUserSchema, userSerialized } from '../entity/User'
 
 const router = Router()
 const routeAdmin = "/admin/"
@@ -12,15 +12,6 @@ const routeArtist = "/artist/"
 /**
  * Admin section
  */
-
-// Affiche tout les utlisateurs sans afficher le mot de passe
-router.get(routeAdmin + '/remove-passwd', async (req, res) => {
-    const users = await User.find()
-    console.log((req as any).auth)
-    return res
-        .status(200)
-        .json(removePassword(users.map((user) => removePassword(user.toObject()))))
-})
 
 // Recherche d'un utilisateur
 router.get(routeAdmin +'/search-user/:id', async (req, res) => {

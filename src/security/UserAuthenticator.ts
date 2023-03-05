@@ -1,4 +1,4 @@
-import { type User, removePassword } from '../entity/User'
+import { type User } from '../entity/User'
 import jwt from 'jsonwebtoken'
 import * as fs from "fs";
 

@@ -14,10 +14,12 @@ export const UpdateUserSchema = joi.object({
     password: joi.string().optional()
 }).required()
 
-export const removePassword = (user: any) => {
+export const userSerialized = (user: any) => {
     const { password, ...userWithoutPassword } = user
+    const { _id, ...userWithoutId } = userWithoutPassword
+    const { __v, ...userSerialized } = userWithoutId
 
-    return userWithoutPassword
+    return userSerialized
 }
 
 const userSchema = new mongoose.Schema({
@@ -34,4 +36,4 @@ const userSchema = new mongoose.Schema({
     updated_at: Date
 })
 
-export const User = mongoose.model('Person', userSchema)
+export const User = mongoose.model('User', userSchema)

@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 import { jwt } from './src/security/AuthMiddleware'
 import errorHandler from "./src/error/errorsMiddleware";
 import usersRouter from "./src/controller/UserController";
-import authRouter from "./src/controller/AuthController";
+import authRouter from "./src/controller/LoginController";
+import registerRouter from "./src/controller/RegisterController";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/auth', registerRouter);
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

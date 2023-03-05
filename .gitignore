@@ -3,4 +3,3 @@ node_modules
 data
 yarn-error.log
 jwt_secret.txt
-.env.local

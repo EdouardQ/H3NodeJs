@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { User, removePassword } from '../entity/User'
+import { User, userSerialized } from '../entity/User'
 import {validPassword} from "../sevices/PasswordHasherService";
 import LoginDTO, {loginSchema} from "../dto/login";
 import {generateToken} from "../security/UserAuthenticator";
@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
     }
 
     const token = generateToken(user.toObject())
-    res.status(200).json(removePassword({...user.toObject(), token}))
+    res.status(200).json({ user: userSerialized(token) })
 })
 
 export default router
