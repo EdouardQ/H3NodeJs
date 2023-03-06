@@ -1,4 +1,4 @@
-import joi, {object} from 'joi'
+import joi from 'joi'
 import mongoose from 'mongoose'
 
 export const CreateModelSchema = joi.object({

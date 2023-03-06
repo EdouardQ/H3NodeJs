@@ -52,25 +52,34 @@
 					"response": []
 				},
 				{
-					"name": "Get all Models",
+					"name": "Add Manager",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"azerty\",\n    \"name\": \"{{$randomUserName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/admin/models",
+							"raw": "{{baseUrl}}/admin/register_manager",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"admin",
-								"models"
+								"register_manager"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Put Ban User",
+					"name": "Ban User",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -104,7 +113,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Ban User",
+					"name": "Delete User",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -123,6 +132,24 @@
 									"key": "id",
 									"value": "640518878c781aae21a69314"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/admin/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"models"
 							]
 						}
 					},
@@ -170,7 +197,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomProduct}}\",\n    \"url\": \"{{$randomCommonFileName}}\"\n}",
+							"raw": "{\n    \"name\": \"{{$randomProduct}}\",\n    \"url\": \"{{$randomCommonFileName}}\",\n    \"title\": \"{{$randomProduct}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -203,6 +230,93 @@
 							"path": [
 								"artist",
 								"models"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "Get all Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/manager/models",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"manager",
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Rate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rate\": 1,\n    \"comment\": \"{{$randomPhrase}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/manager/rate/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"manager",
+								"rate",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "640664f03c17630c2f994ed8"
+								}
 							]
 						}
 					},
@@ -295,61 +409,7 @@
 			"response": []
 		},
 		{
-			"name": "Register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"azerty\",\n    \"name\": \"{{$randomUserName}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseUrl}}/auth/register",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"auth",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Register Dev",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"toto@toto.fr\",\n    \"password\": \"azerty\",\n    \"name\": \"tata\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseUrl}}/auth/register",
-					"host": [
-						"{{baseUrl}}"
-					],
-					"path": [
-						"auth",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login Admin",
+			"name": "Login - Admin",
 			"event": [
 				{
 					"listen": "test",
@@ -383,6 +443,33 @@
 					"path": [
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"azerty\",\n    \"name\": \"{{$randomUserName}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"register"
 					]
 				}
 			},

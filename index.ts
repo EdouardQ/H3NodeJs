@@ -6,6 +6,7 @@ import adminRouter from "./src/controller/AdminController";
 import artistRouter from "./src/controller/ArtistController";
 import authRouter from "./src/controller/LoginController";
 import registerRouter from "./src/controller/RegisterController";
+import managerRouter from "./src/controller/ManagerController";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -35,6 +36,7 @@ app.use('/admin', adminRouter);
 app.use('/artist', artistRouter);
 app.use('/auth', authRouter);
 app.use('/auth', registerRouter);
+app.use('/manager', managerRouter);
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

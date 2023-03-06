@@ -1,10 +1,9 @@
 import { Router } from 'express'
-import {isArtist} from "../security/UserManager";
-import { CreateModelSchema, Model } from "../entity/Model";
+import {getIdUser, isArtist} from "../security/UserManager";
+import { Model } from "../entity/Model";
 import rateDTO, {rateSchema} from "../dto/rate";
 import {verifUniqueRateModelService} from "../sevices/UniqueRateModelService";
 import {User} from "../entity/User";
-
 
 const router = Router()
 
@@ -37,14 +36,20 @@ router.post('/rate/:id', async (req, res) => {
         return res.status(400).json({ error: "comment not complete enough" })
     }
 
-    if(!await verifUniqueRateModelService(req.params.id, rateDTO.id_manager)){
-        return res.status(400).json({ error: "you already given your rating" })
-    }
-
-    const model = await Model.findById(req.params.id)
+    const model = await Model.findById(req.params.id);
 
     if (model == null) {
         return res.status(404).json({ error: "this model is not found" })
+    }
+
+    const id_manager = getIdUser(req);
+
+    if (id_manager == null) {
+        return res.status(500).json({ error: "Interal error" })
+    }
+
+    if(!await verifUniqueRateModelService(req.params.id, id_manager)){
+        return res.status(400).json({ error: "you already given your rating" })
     }
 
     model.rating.push(
@@ -52,7 +57,7 @@ router.post('/rate/:id', async (req, res) => {
             rate: rateDTO.rate,
             comment: rateDTO.comment,
             created_at: new Date(),
-            id_manager: rateDTO.id_manager
+            id_manager: id_manager
         }
     )
     let msg = ""
@@ -71,6 +76,8 @@ router.post('/rate/:id', async (req, res) => {
             msg = " and model has not been published"
         }
     }
+
+    let modelUpdated = await model.save();
 
     return res.status(200).json({ message: 'rating saved' + msg })
 })

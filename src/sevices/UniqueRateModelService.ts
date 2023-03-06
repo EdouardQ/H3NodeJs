@@ -5,7 +5,7 @@ export const verifUniqueRateModelService = async (id_modal: string, id_manager: 
         let unique = true;
 
         if (model === null) {
-            return unique;
+            return false;
         }
 
         model.rating.forEach((rate) => {
