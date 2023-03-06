@@ -1,8 +1,13 @@
 import {Model} from "../entity/Model";
 
-export const verifUniqueRateModelService = async (id_modal: Number, id_manager: string): Promise<boolean> => {
-    return Model.find({id_modal}).then((model) => {
+export const verifUniqueRateModelService = async (id_modal: string, id_manager: string): Promise<boolean> => {
+    return Model.findOne({id: id_modal}).then((model) => {
         let unique = true;
+
+        if (model === null) {
+            return unique;
+        }
+
         model.rating.forEach((rate) => {
             if (id_manager === rate.id_manager) {
                 unique = false;
