@@ -3,7 +3,7 @@ export default interface modelDTO {
     title: string,
     artistId: string,
     url: string,
-    valid: boolean,
+    valid: Number,
     rating: Array<object>,
     uploaded_at: Date,
     updated_at: Date
