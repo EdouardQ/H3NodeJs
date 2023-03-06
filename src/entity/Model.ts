@@ -16,7 +16,7 @@ export const UpdateVotesModelSchema = joi.object({
 }).required()
 
 const modelSchema = new mongoose.Schema({
-    id: Number,
+    id: String,
     name: String,
     title: String,
     artistId: String,
