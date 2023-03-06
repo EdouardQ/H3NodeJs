@@ -8,7 +8,7 @@ export const CreateModelSchema = joi.object({
 }).required()
 
 export const UpdateValidModelSchema = joi.object({
-    valid: joi.boolean().required()
+    valid: joi.number().required()
 }).required()
 
 export const UpdateVotesModelSchema = joi.object({
