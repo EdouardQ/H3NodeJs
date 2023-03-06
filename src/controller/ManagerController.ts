@@ -57,7 +57,17 @@ router.post('/rate/:id', async (req, res) => {
     )
 
     if(model.rating.length == await User.countDocuments({role: "manager"})){
-        // todo
+        let totalRate = 0
+        model.rating.forEach((rate) => {
+            totalRate += rate.rate
+        });
+
+        // On considère que si les votes pour / contre sont égaux alors nous validons
+        if(totalRate >= 0){
+            model.valid = 1
+        } else {
+            model.valid = -1
+        }
     }
 
     return res.status(200).json({ message: 'rating saved' })
