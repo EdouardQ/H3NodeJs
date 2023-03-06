@@ -3,6 +3,7 @@ import {isArtist} from "../security/UserManager";
 import { CreateModelSchema, Model } from "../entity/Model";
 import rateDTO, {rateSchema} from "../dto/rate";
 import {verifUniqueRateModelService} from "../sevices/UniqueRateModelService";
+import {User} from "../entity/User";
 
 
 const router = Router()
@@ -54,6 +55,10 @@ router.post('/rate/:id', async (req, res) => {
             id_manager: rateDTO.id_manager
         }
     )
+
+    if(model.rating.length == await User.countDocuments({role: "manager"})){
+        // todo
+    }
 
     return res.status(200).json({ message: 'rating saved' })
 })
