@@ -8,7 +8,5 @@ export default interface rateDTO {
     rate: Number,
     comment: string,
     created_at: Date,
-
     id_manager: string
-
 }
