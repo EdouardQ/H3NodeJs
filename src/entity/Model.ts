@@ -1,8 +1,9 @@
-import joi from 'joi'
+import joi, {object} from 'joi'
 import mongoose from 'mongoose'
 
 export const CreateModelSchema = joi.object({
     name: joi.string().required(),
+    title: joi.string().required(),
     url: joi.string().required(),
 }).required()
 
@@ -11,18 +12,17 @@ export const UpdateValidModelSchema = joi.object({
 }).required()
 
 export const UpdateVotesModelSchema = joi.object({
-    approval: joi.number().required(),
-    disapproval: joi.number().required()
+    rating: joi.array().required()
 }).required()
 
 const modelSchema = new mongoose.Schema({
     id: Number,
     name: String,
+    title: String,
     artistId: String,
     url: String,
     valid: Boolean,
-    approval: Number,
-    disapproval: Number,
+    rating: Array,
     uploaded_at: Date,
     updated_at: Date
 })
