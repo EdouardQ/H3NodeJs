@@ -21,7 +21,7 @@ const modelSchema = new mongoose.Schema({
     title: String,
     artistId: String,
     url: String,
-    valid: Boolean,
+    valid: Number,
     rating: Array,
     uploaded_at: Date,
     updated_at: Date
