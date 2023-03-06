@@ -39,7 +39,7 @@ router.post('/models', async (req, res) => {
     let modelDTO = req.body as modelDTO;
     modelDTO.artistId = artistId;
     modelDTO.rating = [];
-    modelDTO.valid = false;
+    modelDTO.valid = 0;
     modelDTO.uploaded_at = new Date();
     modelDTO.updated_at = new Date();
 
