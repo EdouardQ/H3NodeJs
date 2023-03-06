@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { getIdUser, isArtist } from "../security/UserManager";
+import {getIdUser, isArtist, isManager} from "../security/UserManager";
 import { CreateModelSchema, Model } from "../entity/Model";
 import modelDTO from "../dto/model";
 
 const router = Router()
 
 router.get('/models', async (req, res) => {
-    if (!isArtist(req, res)) {
+    if (isManager(req, res)) {
         return res.status(403).json({ error: 'Forbidden' });
     }
 
@@ -39,7 +39,7 @@ router.post('/models', async (req, res) => {
     let modelDTO = req.body as modelDTO;
     modelDTO.artistId = artistId;
     modelDTO.rating = [];
-    // modelDTO.valid = true;
+    modelDTO.valid = false;
     modelDTO.uploaded_at = new Date();
     modelDTO.updated_at = new Date();
 
