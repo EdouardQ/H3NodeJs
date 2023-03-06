@@ -55,7 +55,7 @@ router.post('/rate/:id', async (req, res) => {
             id_manager: rateDTO.id_manager
         }
     )
-
+    let msg = ""
     if(model.rating.length == await User.countDocuments({role: "manager"})){
         let totalRate = 0
         model.rating.forEach((rate) => {
@@ -65,12 +65,14 @@ router.post('/rate/:id', async (req, res) => {
         // On considère que si les votes pour / contre sont égaux alors nous validons
         if(totalRate >= 0){
             model.valid = 1
+            msg = " and model has been published"
         } else {
             model.valid = -1
+            msg = " and model has not been published"
         }
     }
 
-    return res.status(200).json({ message: 'rating saved' })
+    return res.status(200).json({ message: 'rating saved' + msg })
 })
 
 export default router
